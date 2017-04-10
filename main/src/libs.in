@@ -1,0 +1,9 @@
+BASELIB=${BASE}/libs
+
+LISTSINCLUDE=${BASELIB}/lists/include
+LISTSDIR=${BASELIB}/lists/lib
+LISTSAR=${LISTSDIR}/liblists.a
+
+TREESINCLUDE=${BASELIB}/trees/include
+TREESDIR=${BASELIB}/trees/lib
+TREESAR=${TREESDIR}/libtrees.a
