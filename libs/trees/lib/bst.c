@@ -2,135 +2,135 @@
 #include <stdlib.h>
 #include <trees.h>
 
-void bst_inicializa(BST_NODO **ref_nodo) {
-    *ref_nodo = NULL;
+void bst_initialize(BST_NODE **ref_node) {
+    *ref_node = NULL;
 }
 
-void bst_imprime_dado(BST_DADO dado) {
-    printf("%d\n", dado);
+void bst_print_data(BST_DATA data) {
+    printf("%d\n", data);
 }
 
-BST_NODO *bst_cria_nodo(BST_DADO dado) {
-    BST_NODO *novo_nodo = (BST_NODO *) malloc(sizeof(BST_NODO));
+BST_NODE *bst_create_node(BST_DATA data) {
+    BST_NODE *new_node = (BST_NODE *) malloc(sizeof(BST_NODE));
 
-    novo_nodo->dado = dado;
-    novo_nodo->esquerda = NULL;
-    novo_nodo->direita = NULL;
+    new_node->data = data;
+    new_node->left = NULL;
+    new_node->right = NULL;
 
-    return novo_nodo;
+    return new_node;
 }
 
-BST_NODO *bst_insere(BST_NODO *nodo, BST_DADO dado) {
-    if(nodo == NULL) {
-        BST_NODO *novo_nodo = bst_cria_nodo(dado);
+BST_NODE *bst_insert(BST_NODE *node, BST_DATA data) {
+    if(node == NULL) {
+        BST_NODE *new_node = bst_create_node(data);
 
-        return novo_nodo;
+        return new_node;
     }
     else {
-        if(nodo->dado > dado) {
-            nodo->esquerda = bst_insere(nodo->esquerda, dado);
+        if(node->data > data) {
+            node->left = bst_insert(node->left, data);
         }
         else {
-            nodo->direita = bst_insere(nodo->direita, dado);
+            node->right = bst_insert(node->right, data);
         }
 
-        return nodo;
+        return node;
     }
 }
 
-int bst_existe_dado(BST_NODO *nodo, BST_DADO dado) {
-    if(nodo == NULL) {
+int bst_exists_data(BST_NODE *node, BST_DATA data) {
+    if(node == NULL) {
         return 0;
     }
     else {
-        if(nodo->dado == dado) {
+        if(node->data == data) {
             return 1;
         }
 
-        if(nodo->dado > dado) {
-            return bst_existe_dado(nodo->esquerda, dado);
+        if(node->data > data) {
+            return bst_exists_data(node->left, data);
         }
         else {
-            return bst_existe_dado(nodo->direita, dado);
+            return bst_exists_data(node->right, data);
         }
     }
 }
 
-int bst_contagem(BST_NODO *nodo) {
-    if(nodo == NULL) {
+int bst_count(BST_NODE *node) {
+    if(node == NULL) {
         return 0;
     }
     else {
-        int contador_esquerda = bst_contagem(nodo->esquerda);
-        int contador_direita  = bst_contagem(nodo->direita);
+        int counter_left = bst_count(node->left);
+        int counter_right = bst_count(node->right);
 
-        return (contador_esquerda + contador_direita + 1);
+        return (counter_left + counter_right + 1);
     }
 }
 
-int bst_profundidade(BST_NODO *nodo) {
-    if(nodo == NULL) {
+int bst_depth(BST_NODE *node) {
+    if(node == NULL) {
         return 0;
     }
     else {
-        int profundidade_e = bst_profundidade(nodo->esquerda);
-        int profundidade_d = bst_profundidade(nodo->direita);
+        int depth_l = bst_depth(node->left);
+        int depth_r = bst_depth(node->right);
 
-        return(profundidade_e > profundidade_d ? (profundidade_e + 1) : (profundidade_d + 1));
+        return(depth_l > depth_r ? (depth_l + 1) : (depth_r + 1));
     }
 } 
 
-int bst_altura(BST_NODO *nodo) {
-    return bst_profundidade(nodo) - 1;
+int bst_height(BST_NODE *node) {
+    return bst_depth(node) - 1;
 }
 
-BST_DADO bst_minimo(BST_NODO *nodo) {
-    BST_NODO *atual = nodo;
-    while(atual->esquerda != NULL) {
-        atual = atual->esquerda;
+BST_DATA bst_minimum(BST_NODE *node) {
+    BST_NODE *current = node;
+    while(current->left != NULL) {
+        current = current->left;
     }
 
-    return atual->dado;
+    return current->data;
 }
 
-BST_DADO bst_maximo(BST_NODO *nodo) {
-    BST_NODO *atual = nodo;
-    while(atual->direita != NULL) {
-        atual = atual->direita;
+BST_DATA bst_maximum(BST_NODE *node) {
+    BST_NODE *current = node;
+    while(current->right != NULL) {
+        current = current->right;
     }
 
-    return atual->dado;
+    return current->data;
 }
 
-void bst_imprime(BST_NODO *nodo) {
-    if(nodo == NULL) {
+void bst_print(BST_NODE *node) {
+    if(node == NULL) {
         return;
     }
     else {
-        if(nodo->esquerda != NULL) {
-            bst_imprime(nodo->esquerda);
+        if(node->left != NULL) {
+            bst_print(node->left);
         }
-        if(nodo->direita != NULL) {
-            bst_imprime(nodo->direita);
+        if(node->right != NULL) {
+            bst_print(node->right);
         }
         
-        bst_imprime_dado(nodo->dado);
+        bst_print_data(node->data);
     }
 }
 
-void bst_destroi(BST_NODO *nodo) {
-    if(nodo == NULL) {
+void bst_destroy(BST_NODE *node) {
+    if(node == NULL) {
         return;
     }
     else {
-        if(nodo->esquerda != NULL) {
-            bst_destroi(nodo->esquerda);
+        if(node->left != NULL) {
+            bst_destroy(node->left);
         }
-        if(nodo->direita != NULL) {
-            bst_destroi(nodo->direita);
+        if(node->right != NULL) {
+            bst_destroy(node->right);
         }
 
-        free(nodo);
+        free(node);
         return;
     }
 }

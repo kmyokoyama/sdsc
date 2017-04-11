@@ -1,25 +1,25 @@
 #ifndef _TREES_H_
 #define _TREES_H_
 
-typedef int BST_DADO;
+typedef int BST_DATA;
 
-typedef struct bst_nodo {
-    BST_DADO dado;
-    struct bst_nodo *esquerda;
-    struct bst_nodo *direita;
-} BST_NODO;
+typedef struct bst_node {
+    BST_DATA data;
+    struct bst_node *left;
+    struct bst_node *right;
+} BST_NODE;
 
-void bst_inicializa(BST_NODO **ref_nodo);
-void bst_imprime_dado(BST_DADO dado);
-BST_NODO *bst_cria_nodo(BST_DADO dado);
-BST_NODO *bst_insere(BST_NODO *nodo, BST_DADO dado);
-int bst_existe_dado(BST_NODO *nodo, BST_DADO dado);
-int bst_contagem(BST_NODO *nodo);
-int bst_profundidade(BST_NODO *nodo);
-int bst_altura(BST_NODO *nodo);
-BST_DADO bst_minimo(BST_NODO *nodo);
-BST_DADO bst_maximo(BST_NODO *nodo);
-void bst_imprime(BST_NODO *nodo);
-void bst_destroi(BST_NODO *nodo);
+void bst_initialize(BST_NODE **ref_node);
+void bst_print_data(BST_DATA data);
+BST_NODE *bst_create_node(BST_DATA data);
+BST_NODE *bst_insert(BST_NODE *node, BST_DATA data);
+int bst_exists_data(BST_NODE *node, BST_DATA data);
+int bst_count(BST_NODE *node);
+int bst_depth(BST_NODE *node);
+int bst_height(BST_NODE *node);
+BST_DATA bst_minimum(BST_NODE *node);
+BST_DATA bst_maximum(BST_NODE *node);
+void bst_print(BST_NODE *node);
+void bst_destroy(BST_NODE *node);
 
 #endif //_TREES_H_

@@ -4,41 +4,47 @@
 int main(int argc, char **argv) {
     DEQUE *deque;
 
-    deque = deque_cria();
+    deque = deque_create();
 
-    deque_adiciona_comeco(deque, "Voce");
-    deque_adiciona_fim(deque, "eh");
-    deque_adiciona_fim(deque, "bem");
-    deque_adiciona_indice(deque, 3, "legal");
-    deque_adiciona_indice(deque, 1, "nao");
+    deque_insert_first(deque, "this");
+    deque_insert_last(deque, "is");
+    deque_insert_last(deque, "a");
+    deque_insert_index(deque, 3, "test");
+    deque_insert_index(deque, 1, "code");
 
-    DEQUE *novo_deque = deque_copia(deque);
+    DEQUE *new_deque = deque_copy(deque);
 
-    while(deque->tamanho != 0) {
-        printf("%s\n", deque_remove_comeco(deque));
+    while(deque->size != 0) {
+        printf("%s\n", deque_remove_first(deque));
     }
 
-    deque_destroi(&deque);
+    deque_destroy(&deque);
 
     if(deque == NULL) {
-        printf("Deque foi destruido.\n");
+        printf("The deque has been destroyed.\n");
     }
 
-    deque_adiciona_indice(novo_deque, 2, "legal");
-    deque_adiciona_fim(novo_deque, "Voce");
+    deque_insert_index(new_deque, 2, "I");
+    deque_insert_last(new_deque, "said");
 
-    deque_remove_duplicados(novo_deque);
+    deque_remove_duplicated(new_deque);
 
-    deque_troca_dados(novo_deque, 0, 4);
+    deque_swap(new_deque, 0, 2);
+    deque_swap(new_deque, 1, 6);
 
-    deque_reverte(novo_deque);
+    deque_reverse(new_deque);
+    deque_reverse(new_deque);
 
-    DEQUE_ITERADOR it = cria_deque_iterador(novo_deque);
-    while(it.tem_proximo) {
-        printf("%s\n", deque_le_dado(&it));
+    DEQUE_ITERATOR it = deque_iterator_create(new_deque);
+    while(it.has_next) {
+        printf("%s\n", deque_read_data(&it));
     }
 
-    deque_destroi(&novo_deque);
+    deque_destroy(&new_deque);
+
+    if(deque == NULL) {
+        printf("The deque has been destroyed.\n");
+    }
 
     return 0;
 }

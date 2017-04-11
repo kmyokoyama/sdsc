@@ -2,25 +2,25 @@
 #include <trees.h>
 
 int main(int argc, char **argv) {
-    BST_NODO *raiz;
+    BST_NODE *root;
 
-    bst_inicializa(&raiz);
+    bst_initialize(&root);
 
-    raiz = bst_insere(raiz, 2);
-    raiz = bst_insere(raiz, 1);
-    raiz = bst_insere(raiz, 3);
-    raiz = bst_insere(raiz, 4);
-    raiz = bst_insere(raiz, 5);
+    root = bst_insert(root, 2);
+    root = bst_insert(root, 1);
+    root = bst_insert(root, 3);
+    root = bst_insert(root, 4);
+    root = bst_insert(root, 5);
 
-    printf("Numero de nodos: %d\n", bst_contagem(raiz));
-    printf("Profundidade: %d\n", bst_profundidade(raiz));
-    printf("Altura: %d\n", bst_altura(raiz));
-    printf("Minimo: %d\n", bst_minimo(raiz));
-    printf("Maximo: %d\n", bst_maximo(raiz));
+    printf("Number of nodes: %d\n", bst_count(root));
+    printf("Depth: %d\n", bst_depth(root));
+    printf("Height: %d\n", bst_height(root));
+    printf("Minimum: %d\n", bst_minimum(root));
+    printf("Maximum: %d\n", bst_maximum(root));
 
-    bst_imprime(raiz);
+    bst_print(root);
 
-    bst_destroi(raiz);
+    bst_destroy(root);
 
     return 0;
 }

@@ -1,4 +1,4 @@
-TARGET=main_bst
+TARGET=main_deque
 SRCS=${TARGET}.c
 
 BASE=../..
