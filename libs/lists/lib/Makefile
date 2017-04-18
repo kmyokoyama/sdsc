@@ -1,5 +1,5 @@
 TARGET=liblists.a
-SRCS=deque.c deque_iterator.c stack.c queue.c
+SRCS=linked_list.c linked_list_iterator.c stack.c queue.c
 
 FLAGS=-O2 -Wall -g -MMD
 INCLUDE=-I. -I../include

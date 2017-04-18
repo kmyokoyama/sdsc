@@ -1,4 +1,4 @@
-TARGET=main_deque
+TARGET=test_linked_list
 SRCS=${TARGET}.c
 
 BASE=../..
