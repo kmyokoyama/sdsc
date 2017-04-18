@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
     deque_destroy(&deque);
 
     if(deque == NULL) {
-        printf("The deque has been destroyed.\n");
+        printf("Deque has been destroyed.\n");
     }
 
     deque_insert_index(new_deque, 2, "I");
@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
     deque_destroy(&new_deque);
 
     if(deque == NULL) {
-        printf("The deque has been destroyed.\n");
+        printf("Deque has been destroyed.\n");
     }
 
     return 0;
