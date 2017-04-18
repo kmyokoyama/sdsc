@@ -3,5 +3,6 @@
 
 #include <deque.h>
 #include <deque_iterator.h>
+#include <stack.h>
 
 #endif //_LISTS_H_
