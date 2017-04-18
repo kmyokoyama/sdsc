@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <deque_iterator.h>
 
-DEQUE_ITERATOR deque_iterator_create(DEQUE *deque) {
+DEQUE_ITERATOR deque_iterator_create(const DEQUE *deque) {
     DEQUE_ITERATOR it;
 
     it.node = deque->head;
@@ -29,5 +29,5 @@ DEQUE_DATA deque_read_data(DEQUE_ITERATOR *it) {
 
     deque_iterator_next(it);
 
-    return(data);
+    return data;
 }

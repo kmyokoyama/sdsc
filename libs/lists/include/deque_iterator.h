@@ -3,7 +3,7 @@
 
 #include <deque.h>
 
-DEQUE_ITERATOR deque_iterator_create(DEQUE *deque);
+DEQUE_ITERATOR deque_iterator_create(const DEQUE *deque);
 void deque_iterator_next(DEQUE_ITERATOR *it);
 DEQUE_DATA deque_read_data(DEQUE_ITERATOR *it);
 

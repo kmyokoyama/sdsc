@@ -6,17 +6,25 @@ DEQUE *deque_create() {
 
     deque = (DEQUE *) malloc(sizeof(DEQUE));
 
+    if (deque == NULL) {
+        return NULL;
+    }
+
     deque->head = NULL;
     deque->tail = NULL;
     deque->size = 0;
 
-    return(deque);
+    return deque;
 }
 
-void deque_insert_first(DEQUE *deque, DEQUE_DATA data) {
+unsigned int deque_insert_first(DEQUE *deque, const DEQUE_DATA data) {
     DEQUE_NODE *new_node;
 
     new_node = (DEQUE_NODE *) malloc(sizeof(DEQUE_NODE));
+
+    if (new_node == NULL) {
+        return 0;
+    }
 
     new_node->data = data;
     new_node->previous = NULL;
@@ -32,6 +40,8 @@ void deque_insert_first(DEQUE *deque, DEQUE_DATA data) {
     deque->head = new_node;
 
     deque->size++;
+
+    return deque->size;
 }
 
 DEQUE_DATA deque_remove_first(DEQUE *deque) {
@@ -54,13 +64,17 @@ DEQUE_DATA deque_remove_first(DEQUE *deque) {
     free(first);
     deque->size--;
 
-    return(data);
+    return data;
 }
 
-void deque_insert_last(DEQUE *deque, DEQUE_DATA data) {
+unsigned int deque_insert_last(DEQUE *deque, const DEQUE_DATA data) {
     DEQUE_NODE *new_node;
 
     new_node = (DEQUE_NODE *) malloc(sizeof(DEQUE_NODE));
+
+    if (new_node == NULL) {
+        return 0;
+    }
 
     new_node->data = data;
     new_node->previous = deque->tail;
@@ -76,6 +90,8 @@ void deque_insert_last(DEQUE *deque, DEQUE_DATA data) {
     deque->tail = new_node;
 
     deque->size++;
+
+    return deque->size;
 }
 
 DEQUE_DATA deque_remove_last(DEQUE *deque) {
@@ -98,21 +114,19 @@ DEQUE_DATA deque_remove_last(DEQUE *deque) {
     free(last);
     deque->size--;
 
-    return(data);
+    return data;
 }
 
-void deque_insert_index(DEQUE *deque, int index, DEQUE_DATA data) {
+unsigned int deque_insert_index(DEQUE *deque, int index, const DEQUE_DATA data) {
     if((index < 0) || (index > deque->size)) {
-        return;
+        return 0;
     }
 
     if(index == 0) {
-        deque_insert_first(deque, data);
-        return;
+        return deque_insert_first(deque, data);
     }
     if(index == deque->size) {
-        deque_insert_last(deque, data);
-        return;
+        return deque_insert_last(deque, data);
     }
 
     DEQUE_NODE *current = deque->head;
@@ -125,6 +139,10 @@ void deque_insert_index(DEQUE *deque, int index, DEQUE_DATA data) {
     DEQUE_NODE *new_node;
     new_node = (DEQUE_NODE *) malloc(sizeof(DEQUE_NODE));
 
+    if (new_node == NULL) {
+        return 0;
+    }
+
     new_node->data = data;
     new_node->previous = current;
     new_node->next = current->next;
@@ -132,6 +150,8 @@ void deque_insert_index(DEQUE *deque, int index, DEQUE_DATA data) {
     current->next = new_node;
 
     deque->size++;
+
+    return deque->size;
 }
 
 DEQUE_DATA deque_remove_index(DEQUE *deque, int index) {
@@ -168,10 +188,10 @@ DEQUE_DATA deque_remove_index(DEQUE *deque, int index) {
 
     deque->size--;
 
-    return(data);
+    return data;
 }
 
-DEQUE *deque_copy(DEQUE *deque_src) {
+DEQUE *deque_copy(const DEQUE *deque_src) {
     DEQUE *deque_dst;
     deque_dst = deque_create();
 
@@ -184,14 +204,14 @@ DEQUE *deque_copy(DEQUE *deque_src) {
         deque_insert_last(deque_dst, data_current);
     }
 
-    return(deque_dst);
+    return deque_dst;
 }
 
-int deque_count(DEQUE *deque) {
+unsigned int deque_size(const DEQUE *deque) {
     return deque->size;
 }
 
-int deque_index_first(DEQUE *deque, DEQUE_DATA data) {
+int deque_index_first(const DEQUE *deque, const DEQUE_DATA data) {
     DEQUE_NODE *current = deque->head;
     int i = 0;
 
