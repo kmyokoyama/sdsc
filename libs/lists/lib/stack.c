@@ -6,17 +6,25 @@ STACK *stack_create() {
 
     stack = (STACK *) malloc(sizeof(STACK));
 
+    if (stack == NULL) {
+        return NULL;
+    }
+
     stack->head = NULL;
     stack->tail = NULL;
     stack->size = 0;
 
-    return(stack);
+    return stack;
 }
 
-void stack_push(STACK *stack, STACK_DATA data) {
+unsigned int stack_push(STACK *stack, const STACK_DATA data) {
     STACK_NODE *new_node;
 
     new_node = (STACK_NODE *) malloc(sizeof(STACK_NODE));
+
+    if (new_node == NULL) {
+        return 0;
+    }
 
     new_node->data = data;
 
@@ -31,6 +39,8 @@ void stack_push(STACK *stack, STACK_DATA data) {
     stack->tail = new_node;
 
     stack->size++;
+
+    return stack->size;
 }
 
 STACK_DATA stack_pop(STACK *stack) {
@@ -50,14 +60,14 @@ STACK_DATA stack_pop(STACK *stack) {
     free(last);
     stack->size--;
 
-    return(data);
+    return data;
 }
 
-int stack_size(STACK *stack) {
+int stack_size(const STACK *stack) {
     return stack->size;
 }
 
-int stack_is_empty(STACK *stack) {
+int stack_is_empty(const STACK *stack) {
     return (stack->size == 0 ? 1 : 0);
 }
 
