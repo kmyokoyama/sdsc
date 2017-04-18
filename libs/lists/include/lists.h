@@ -5,5 +5,6 @@
 #include <linked_list_iterator.h>
 #include <stack.h>
 #include <queue.h>
+#include <deque.h>
 
 #endif //_LISTS_H_
