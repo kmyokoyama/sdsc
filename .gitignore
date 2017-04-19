@@ -33,4 +33,4 @@
 *.su
 
 *.d
-main/bin/
+test/bin/
