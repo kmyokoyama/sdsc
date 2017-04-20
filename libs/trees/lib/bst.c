@@ -7,7 +7,7 @@ void bst_initialize(BST_NODE **ref_node) {
 }
 
 void bst_print_data(BST_DATA data) {
-    printf("%d\n", data);
+    printf("%c\n", data);
 }
 
 BST_NODE *bst_create_node(BST_DATA data) {
@@ -38,13 +38,13 @@ BST_NODE *bst_insert(BST_NODE *node, BST_DATA data) {
     }
 }
 
-int bst_exists_data(BST_NODE *node, BST_DATA data) {
+BST_NODE *bst_exists_data(BST_NODE *node, BST_DATA data) {
     if(node == NULL) {
-        return 0;
+        return NULL;
     }
     else {
         if(node->data == data) {
-            return 1;
+            return node;
         }
 
         if(node->data > data) {
@@ -56,13 +56,13 @@ int bst_exists_data(BST_NODE *node, BST_DATA data) {
     }
 }
 
-int bst_count(BST_NODE *node) {
+int bst_size(BST_NODE *node) {
     if(node == NULL) {
         return 0;
     }
     else {
-        int counter_left = bst_count(node->left);
-        int counter_right = bst_count(node->right);
+        int counter_left = bst_size(node->left);
+        int counter_right = bst_size(node->right);
 
         return (counter_left + counter_right + 1);
     }
@@ -84,36 +84,44 @@ int bst_height(BST_NODE *node) {
     return bst_depth(node) - 1;
 }
 
-BST_DATA bst_minimum(BST_NODE *node) {
+BST_NODE *bst_minimum(BST_NODE *node) {
     BST_NODE *current = node;
     while(current->left != NULL) {
         current = current->left;
     }
 
-    return current->data;
+    return current;
 }
 
-BST_DATA bst_maximum(BST_NODE *node) {
+BST_NODE *bst_maximum(BST_NODE *node) {
     BST_NODE *current = node;
     while(current->right != NULL) {
         current = current->right;
     }
 
-    return current->data;
+    return current;
 }
 
-void bst_print(BST_NODE *node) {
-    if(node == NULL) {
-        return;
+void bst_preorder_walk(BST_NODE *node) {
+    if (node != NULL) {
+        bst_print_data(node->data);
+        bst_preorder_walk(node->left);
+        bst_preorder_walk(node->right);
     }
-    else {
-        if(node->left != NULL) {
-            bst_print(node->left);
-        }
-        if(node->right != NULL) {
-            bst_print(node->right);
-        }
-        
+}
+
+void bst_inorder_walk(BST_NODE *node) {
+    if (node != NULL) {
+        bst_inorder_walk(node->left);
+        bst_print_data(node->data);
+        bst_inorder_walk(node->right);
+    }
+}
+
+void bst_postorder_walk(BST_NODE *node) {
+    if (node != NULL) {
+        bst_postorder_walk(node->left);
+        bst_postorder_walk(node->right);
         bst_print_data(node->data);
     }
 }
