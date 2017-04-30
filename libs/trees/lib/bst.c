@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <trees.h>
+#include <bst.h>
 
 void bst_initialize(BST_NODE **ref_node) {
     *ref_node = NULL;

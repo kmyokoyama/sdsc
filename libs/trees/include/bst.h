@@ -1,5 +1,5 @@
-#ifndef _TREES_H_
-#define _TREES_H_
+#ifndef _BST_H_
+#define _BST_H_
 
 typedef char BST_DATA;
 
@@ -24,4 +24,4 @@ void bst_inorder_walk(BST_NODE *node);
 void bst_postorder_walk(BST_NODE *node);
 void bst_destroy(BST_NODE *node);
 
-#endif //_TREES_H_
+#endif //_BST_H_
