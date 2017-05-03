@@ -7,7 +7,7 @@ void bst_initialize(BST_NODE **ref_node) {
 }
 
 void bst_print_data(BST_DATA data) {
-    printf("%c\n", data);
+    printf("%d\n", data);
 }
 
 BST_NODE *bst_create_node(BST_DATA data, BST_NODE *parent) {

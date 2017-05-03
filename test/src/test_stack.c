@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <lists.h>
+#include <sdsc.h>
 
 int main(int argc, char **argv) {
     STACK *stack;

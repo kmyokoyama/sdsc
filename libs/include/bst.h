@@ -1,7 +1,7 @@
 #ifndef _BST_H_
 #define _BST_H_
 
-typedef char BST_DATA;
+typedef int BST_DATA;
 
 typedef struct bst_node {
     BST_DATA data;

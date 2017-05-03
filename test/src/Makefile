@@ -1,17 +1,25 @@
-TARGET=test_linked_list
+TARGET=test_load
 SRCS=${TARGET}.c
 
 BASE=../..
 BINDIR=../bin
 
-include libs.in
+#include libs.in
 
-LIBSDIR=${LISTSDIR} ${TREESDIR}
+SDSCINCLUDE=${BASE}/libs/include
+SDSCDIR=${BASE}/libs/lib
+SDSCAR=${SDSCDIR}/libsdsc.a
+
+#LIBSDIR=${LISTSDIR} ${TREESDIR}
 FLAGS=-static -O2 -Wall -g -MMD
-INCLUDE=-I. -I${LISTSINCLUDE} -I${TREESINCLUDE}
-LIBDIR=-L${LISTSDIR} -L${TREESDIR}
-LIBS=-llists -ltrees
-LIBSAR=${LISTSAR} ${TREESAR}
+INCLUDE=-I. -I${SDSCINCLUDE}
+#INCLUDE=-I. -I${LISTSINCLUDE} -I${TREESINCLUDE}
+LIBDIR=-L${SDSCDIR}
+#LIBDIR=-L${LISTSDIR} -L${TREESDIR}
+LIBS=-lsdsc
+#LIBS=-llists -ltrees
+LIBSAR=${SDSCAR}
+#LIBSAR=${LISTSAR} ${TREESAR}
 
 CC=gcc
 CFLAGS=${FLAGS} ${INCLUDE}
@@ -24,6 +32,10 @@ ${TARGET}: ${SRCS:%.c=%.o} ${LIBSAR}
 
 %.o: %.c
 	${CC} ${CFLAGS} -c -o $@ $<
+
+${SDSCAR}:
+	@echo "#################### Building SDSC... ####################"
+	@cd ${SDSCDIR}; make; make clean
 
 ${LISTSAR}:
 	@echo "#################### Building lists... ####################"
@@ -50,4 +62,5 @@ distclean: clean
 
 .PHONY: libclean
 libclean:
-		@for dir in ${LIBSDIR}; do ( cd $${dir}; make distclean; ) done;
+	@cd ${SDSCDIR}; make distclean;
+	#@for dir in ${LIBSDIR}; do ( cd $${dir}; make distclean; ) done;
