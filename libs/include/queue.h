@@ -24,4 +24,17 @@ int queue_size(const QUEUE *queue);
 int queue_is_empty(const QUEUE *queue);
 void queue_destroy(QUEUE **ref_queue);
 
+struct queue_api {
+    QUEUE *(*create_queue)();
+    unsigned int (*enqueue)(QUEUE *, const QUEUE_DATA);
+    QUEUE_DATA (*dequeue)(QUEUE *);
+    int (*size)(const QUEUE *);
+    int (*is_empty)(const QUEUE *);
+    void (*destroy)(QUEUE **);
+};
+
+typedef struct queue_api QUEUE_API;
+
+QUEUE_API *new_queue_api();
+
 #endif //_QUEUE_H_
