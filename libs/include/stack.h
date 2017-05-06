@@ -1,7 +1,9 @@
 #ifndef _STACK_H_
 #define _STACK_H_
 
-typedef char* STACK_DATA;
+#include <common.h>
+
+typedef _DATA STACK_DATA;
 
 typedef struct stack_node {
     STACK_DATA data;

@@ -1,7 +1,9 @@
 #ifndef _DEQUE_H_
 #define _DEQUE_H_
 
-typedef char* DEQUE_DATA;
+#include <common.h>
+
+typedef _DATA DEQUE_DATA;
 
 typedef struct deque_node {
     DEQUE_DATA data;

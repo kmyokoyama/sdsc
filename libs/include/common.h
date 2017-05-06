@@ -1,6 +1,8 @@
 #ifndef _COMMON_H_
 #define _COMMON_H_
 
-#define OPEN_FILE_ERROR (-1)
+#include <errors.h>
+
+typedef void* _DATA;
 
 #endif // _COMMON_H_

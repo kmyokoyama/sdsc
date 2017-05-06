@@ -1,7 +1,9 @@
 #ifndef _LINKED_LIST_H_
 #define _LINKED_LIST_H_
 
-typedef char* LINKED_LIST_DATA;
+#include <common.h>
+
+typedef _DATA LINKED_LIST_DATA;
 
 typedef struct linked_list_node {
     LINKED_LIST_DATA data;

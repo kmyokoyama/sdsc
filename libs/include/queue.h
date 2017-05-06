@@ -1,7 +1,9 @@
 #ifndef _QUEUE_H_
 #define _QUEUE_H_
 
-typedef char* QUEUE_DATA;
+#include <common.h>
+
+typedef _DATA QUEUE_DATA;
 
 typedef struct queue_node {
     QUEUE_DATA data;
