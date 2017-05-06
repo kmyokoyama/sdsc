@@ -23,4 +23,17 @@ int stack_size(const STACK *stack);
 int stack_is_empty(const STACK *stack);
 void stack_destroy(STACK **ref_stack);
 
+struct stack_api {
+    STACK *(*create_stack)(); 
+    unsigned int (*push)(STACK *, const STACK_DATA);
+    STACK_DATA (*pop)(STACK *);
+    int (*size)(const STACK *);
+    int (*is_empty)(const STACK *);
+    void (*destroy)(STACK **);
+};
+
+typedef struct stack_api STACK_API;
+
+STACK_API *new_stack_api();
+
 #endif //_STACK_H_
