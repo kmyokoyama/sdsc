@@ -6,14 +6,14 @@ char *as_str(void *data) {
     return (char *)data;
 }
 
-char *as_char(void *data) {
+char as_char(void *data) {
     return *(char *)data;
 }
 
-char *as_int(void *data) {
+int as_int(void *data) {
     return *(int *)data;
 }
 
-char *as_float(void *data) {
+float as_float(void *data) {
     return *(float *)data;
 }

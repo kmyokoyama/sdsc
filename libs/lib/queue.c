@@ -97,3 +97,23 @@ void queue_destroy(QUEUE **ref_queue) {
     free(*ref_queue);
     *ref_queue = NULL;
 }
+
+QUEUE_API *new_queue_api() {
+    QUEUE_API *_queue_api;
+    _queue_api = NULL;
+
+    _queue_api = (QUEUE_API *) malloc(sizeof(QUEUE_API));
+
+    if (_queue_api == NULL) {
+        exit(-1);
+    }
+    
+    _queue_api->create_queue = &(queue_create);
+    _queue_api->enqueue = &(queue_enqueue);
+    _queue_api->dequeue = &(queue_dequeue);
+    _queue_api->size = &(queue_size);
+    _queue_api->is_empty = &(queue_is_empty);
+    _queue_api->destroy = &(queue_destroy);
+
+    return _queue_api;
+}
