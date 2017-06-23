@@ -6,9 +6,11 @@ void bst_initialize(BST_NODE **ref_node) {
     *ref_node = NULL;
 }
 
+/*
 void bst_print_data(BST_DATA data) {
     printf("%d\n", data);
 }
+*/
 
 BST_NODE *bst_create_node(BST_DATA data, BST_NODE *parent) {
     BST_NODE *new_node = (BST_NODE *) malloc(sizeof(BST_NODE));
@@ -133,6 +135,7 @@ BST_NODE *bst_successor(BST_NODE *node) {
     return successor;
 }
 
+/*
 void bst_preorder_walk(BST_NODE *node) {
     if (node != NULL) {
         bst_print_data(node->data);
@@ -156,6 +159,7 @@ void bst_postorder_walk(BST_NODE *node) {
         bst_print_data(node->data);
     }
 }
+*/
 
 void bst_destroy(BST_NODE *node) {
     if(node == NULL) {
