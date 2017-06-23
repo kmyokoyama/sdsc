@@ -1,4 +1,4 @@
-TARGET=test_load
+TARGET=test_api_queue
 SRCS=${TARGET}.c
 
 BASE=../..
