@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
     int size = stack_size(stack);
     int i;
     for(i = 0; i < size; i++) {
-        printf("%s\n", stack_pop(stack));
+        printf("%s\n", as_str(stack_pop(stack)));
     }
 
     if (stack_is_empty(stack)) {

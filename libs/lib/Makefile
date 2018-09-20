@@ -1,5 +1,5 @@
 TARGET=libsdsc.a
-SRCS=linked_list.c linked_list_iterator.c stack.c queue.c deque.c bst.c load.c
+SRCS=linked_list.c linked_list_iterator.c stack.c queue.c deque.c bst.c utils.c
 
 FLAGS=-O2 -Wall -g -MMD
 INCLUDE=-I. -I../include
